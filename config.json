@@ -1,0 +1,13 @@
+{
+    "rooms": [
+        "16273966003@chatroom"
+    ],
+    "ids": [],
+    "timeout": 60000,
+    "script": "pyton ${./88.py)",
+    "mark": "",
+    "zga": {
+        "last_top_time": 0,
+        "last_time": 1704681529
+    }
+}
