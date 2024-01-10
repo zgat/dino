@@ -1,5 +1,6 @@
 import subprocess
 import json
+import time
 
 def is_script_running(script_name):
     # 使用ps命令列出所有进程，并通过grep搜索脚本名称
@@ -14,6 +15,7 @@ def is_script_running(script_name):
 if not is_script_running('88.py'):
     # 启动脚本a.py
     subprocess.Popen(['python3', '88.py'])
+    time.sleep(2) 
 file_path = "config.json"
 with open(file_path) as file:
     conf = json.load(file)
