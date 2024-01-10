@@ -28,18 +28,23 @@ def filter_new_replies(data, last_max_ctime, is_top_reply=False):
     replies_key = 'replies' if not is_top_reply else 'top_replies'
     replies = [reply for reply in data.get('data', {}).get(replies_key, []) ]
     if is_top_reply != True:
-        replies = [reply for reply in replies if reply.get('mid') == 212153]
-    new_replies = [reply for reply in replies if reply.get('ctime') > last_max_ctime]
+        replies = [reply for reply in replies if reply.get('mid') == 212153] #如果是非置顶 需要筛选出一哥的回复
+    new_replies = [reply for reply in replies if reply.get('ctime') > last_max_ctime] #筛选出新的回复
     if new_replies:
-        last_max_ctime = max(reply.get('ctime') for reply in new_replies)
+        last_max_ctime = max(reply.get('ctime') for reply in new_replies) #存在新的回复，更新最大的ctime
     return new_replies, last_max_ctime
 
-def print_new_replies(replies, message_type):
+def print_new_replies(replies, message_type,conf):
     for reply in sorted(replies, key=lambda x: x.get('ctime')):
         datetime_object = datetime.fromtimestamp(reply.get('ctime'))
         formatted_time = datetime_object.strftime('%Y-%m-%d %H:%M:%S')
         message = reply.get('content', {}).get('message')
         print(formatted_time, f"{message_type}:", message)
+        msg_str = f"{formatted_time} {message_type}: {message}"
+        if message_type == "消息内容":  #保存到配置文件中
+            conf["zga"]["message"].extend([msg_str])
+        else:
+            conf["zga"]["top_message"].extend([msg_str])
 
 def fetch_and_parse_json(url):
     global last_max_ctime
@@ -55,10 +60,14 @@ def fetch_and_parse_json(url):
         response = requests.get(url, headers=headers)
         response.raise_for_status()  # 确保请求成功
         data = response.json()
-        new_replies, last_max_ctime = filter_new_replies(data, last_max_ctime)
-        print_new_replies(new_replies, "消息内容")
-        new_top_replies, last_max_top_ctime = filter_new_replies(data, last_max_top_ctime, is_top_reply=True)
-        print_new_replies(new_top_replies, "置顶消息内容")
+        new_replies, new_ctime = filter_new_replies(data, last_max_ctime)
+        if new_ctime > last_max_ctime:
+            last_max_ctime = new_ctime
+            message = print_new_replies(new_replies, "消息内容",conf)
+        new_top_replies, new_top_ctime = filter_new_replies(data, last_max_top_ctime, is_top_reply=True)
+        if new_top_ctime > last_max_top_ctime:
+            last_max_top_ctime = new_top_ctime
+            top_message = print_new_replies(new_top_replies, "置顶消息内容",conf)
     except requests.RequestException as e:
         print(f"请求出错: {e}")
     conf["zga"]["last_time"] = last_max_ctime

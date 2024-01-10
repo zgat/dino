@@ -4,10 +4,12 @@
     ],
     "ids": [],
     "timeout": 60000,
-    "script": "pyton ${./88.py)",
+    "script": "pyton ${./main.py)",
     "mark": "",
     "zga": {
         "last_top_time": 0,
-        "last_time": 0
+        "last_time": 0,
+        "top_message": [],
+        "message": []
     }
 }
