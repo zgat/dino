@@ -10,10 +10,10 @@ def is_script_running(script_name):
             return True
     return False
 
-# # 检查脚本是否正在运行
-# if not is_script_running('88.py'):
-#     # 启动脚本a.py
-#     subprocess.Popen(['python3', '88.py'])
+# 检查脚本是否正在运行
+if not is_script_running('88.py'):
+    # 启动脚本a.py
+    subprocess.Popen(['python3', '88.py'])
 file_path = "config.json"
 with open(file_path) as file:
     conf = json.load(file)
