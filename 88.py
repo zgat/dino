@@ -86,6 +86,5 @@ def main():
         time.sleep(300)  # 休眠300秒，即5分钟
 
 if __name__ == "__main__":
-    os.chdir(os.path.dirname(__file__))
     main()
 
