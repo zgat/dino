@@ -1,6 +1,6 @@
 import requests
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 import json
 
 
@@ -44,7 +44,7 @@ def print_new_replies(replies, message_type,conf):
         if message_type == "消息内容":  #保存到配置文件中
             conf["zga"]["message"].extend([msg_str])
         else:
-            conf["zga"]["top_message"].extend([msg_str])
+            conf["zga"]["top_message"] = [msg_str]
 
 def fetch_and_parse_json(url):
     global last_max_ctime
@@ -54,8 +54,12 @@ def fetch_and_parse_json(url):
     with open(file_path) as file:
         conf = json.load(file)
 
-    last_max_top_ctime = conf["zga"]["last_top_time"]
-    last_max_ctime = conf["zga"]["last_time"]
+    #获取当前时间
+    current_date = datetime.now()
+    previous_day = current_date - timedelta(days=1)
+    previous_day_timestamp = previous_day.timestamp()
+    last_max_ctime = max(conf["zga"]["last_time"], previous_day_timestamp)
+    last_max_top_ctime = max(conf["zga"]["last_top_time"], previous_day_timestamp)
     try:
         response = requests.get(url, headers=headers)
         response.raise_for_status()  # 确保请求成功
