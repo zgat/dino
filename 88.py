@@ -50,7 +50,7 @@ def fetch_and_parse_json(url):
     global last_max_ctime
     global last_max_top_ctime
     global headers
-    file_path = "config.json"
+    file_path ="config.json"
     with open(file_path) as file:
         conf = json.load(file)
 
@@ -85,4 +85,7 @@ def main():
         fetch_and_parse_json(url)
         time.sleep(300)  # 休眠300秒，即5分钟
 
-main()
+if __name__ == "__main__":
+    os.chdir(os.path.dirname(__file__))
+    main()
+
