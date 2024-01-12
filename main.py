@@ -17,7 +17,7 @@ if __name__ == "__main__":
     # 检查脚本是否正在运行
     if not is_script_running('88.py'):
         # 启动脚本a.py
-        subprocess.Popen(['python3', '88.py'])
+        subprocess.Popen(['python', '88.py'])
         time.sleep(2) 
     file_path = "config.json"
     with open(file_path) as file:
