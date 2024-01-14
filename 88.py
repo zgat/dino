@@ -10,17 +10,17 @@ headers = {
     'Accept': '*/*',
     'Accept-Encoding': 'gzip, deflate, br',
     'Accept-Language': 'zh-CN,zh-TW;q=0.9,zh-HK;q=0.8,zh;q=0.7,en;q=0.6,en-GB;q=0.5,en-US;q=0.4',
-    'Cookie': "buvid3=3447F442-65E1-1F81-19AB-8E0C9E3B0AC638027infoc; b_nut=1696753938; CURRENT_FNVAL=4048; _uuid=AAC97DF3-43610-8921-1EC6-3F57B3110EC1638791infoc; buvid4=8558B91B-8158-097B-F145-EC4EC98E5A4618272-022101010-8HAmuyV9nH8aZ8hFGlSsbA%3D%3D; header_theme_version=CLOSE; home_feed_column=5; rpdid=|(JYYkRkm)Rk0J'uYmY)JRm~k; buvid_fp_plain=undefined; enable_web_push=DISABLE; browser_resolution=1619-958; DedeUserID=1732692; DedeUserID__ckMd5=b5f4f7f3645cf428; share_source_origin=COPY; bsource=share_source_copy_link; hit-dyn-v2=1; PVID=1; fingerprint=3796a42c86b7668fcf2f16c2b59062be; innersign=0; SESSDATA=a38e17a9%2C1720234155%2Cadd0e%2A12CjDni0zHl2COYaZYmr_op-muJlvRk-FqjSly1GNyJtNHorgGatOrmGmkeWqrSDWofCASVlMxNXdEcHIyX1UxZXJ2alI1bDJDbkNfbExnUEROb0pOLXNldmFoVUQ4RTV0S29IZGxkSmJvM0dEaGtsenVmXy0wZGpzZnZJNzJxeWt2UFBhcWZ5eFpRIIEC; bili_jct=0d2c2c7a03f5dd7caeb53a434d4e9340; sid=8g9jctlu; bp_video_offset_1732692=884092234730831922; bili_ticket=eyJhbGciOiJIUzI1NiIsImtpZCI6InMwMyIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDQ5NDEzNzIsImlhdCI6MTcwNDY4MjExMiwicGx0IjotMX0.8EGEPb_DfI0lf05acacYrpnqgd3Mmw9L6-VB0gbxKq0; bili_ticket_expires=1704941312; buvid_fp=3796a42c86b7668fcf2f16c2b59062be; b_lsid=101DA7687_18CE74C1447",
+    'Cookie': "LIVE_BUVID=AUTO2615961160026458; PVID=1; CURRENT_FNVAL=4048; bsource=search_bing; innersign=0; theme_style=light; FEED_LIVE_VERSION=V8; buvid_fp=09ac033591caf0d68c899edf8e7c0e8d; home_feed_column=5; nostalgia_conf=-1; buvid4=F6D1C3B4-23F1-2D43-4A0A-C0559E00500986132-022030423-RWL9F7QZC6vJpL%2FhqFVmXg%3D%3D; browser_resolution=1632-914; buvid3=B6B51FCE-A534-E596-CDD1-FFFBA7B5DE0103408infoc; b_nut=1705242503; i-wanna-go-back=-1; b_ut=7; b_lsid=826CC25B_18D085FA557; _uuid=593D7422-873E-7684-28C2-546CC4D9924102501infoc; enable_web_push=DISABLE; header_theme_version=undefined; SESSDATA=456ddbdf%2C1720794544%2C565b4%2A12CjAeKMFdyjYiOTLVy-wzJXr7SjzrSZ9mYXiBtD5OoofyirXQP2ea_hNAuIRV3p7AfNESVjc3dEM2RkNvY05HN1lDTDNicTlHcjNRM3ByOVlRVXV1NWpLb2djU01vSEhRZXpPZ2FxUXg4bUkwUERSanNxOWJ4Ym52U21GZjVBODM2Wk9YY2wxS2lRIIEC; bili_jct=b90126bc2c5b916f071f55f295d0d35d; DedeUserID=1732692; DedeUserID__ckMd5=b5f4f7f3645cf428; sid=pyos3gd2; bili_ticket=eyJhbGciOiJIUzI1NiIsImtpZCI6InMwMyIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDU1MDE3NjAsImlhdCI6MTcwNTI0MjUwMCwicGx0IjotMX0.9Ytx19AxymXdSjTL3Wif6IFQzgKwIqRy8rY-I1z0pnU; bili_ticket_expires=1705501700",
     'Dnt': '1',
     'Origin': 'https://www.bilibili.com',
     'Referer': 'https://www.bilibili.com/opus/883788966862520403?spm_id_from=333.999.0.0',
     'Sec-Ch-Ua': '"Not_A Brand";v="8", "Chromium";v="120", "Microsoft Edge";v="120"',
     'Sec-Ch-Ua-Mobile': '?0',
-    'Sec-Ch-Ua-Platform': '"Windows"',
+    'Sec-Ch-Ua-Platform': 'macOS',
     'Sec-Fetch-Dest': 'empty',
     'Sec-Fetch-Mode': 'cors',
     'Sec-Fetch-Site': 'same-site',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0'
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.50'
 }
 
 def filter_new_replies(data, last_max_ctime, is_top_reply=False):
@@ -80,7 +80,7 @@ def fetch_and_parse_json(url):
             json.dump(conf, file, indent=4)
 
 def main():
-    url = "https://api.bilibili.com/x/v2/reply/wbi/main?oid=883788966862520403&type=17&mode=3&pagination_str=%7B%22offset%22:%22%22%7D&plat=1&seek_rpid=0&web_location=1315875&w_rid=fd8e66fab22d92c1e8d2bc02d99e5bb5&wts=1704689318"
+    url = "https://api.bilibili.com/x/v2/reply/wbi/main?oid=886478243451895861&type=17&mode=3&pagination_str=%7B%22offset%22:%22%22%7D&plat=1&seek_rpid=0&web_location=1315875&w_rid=c1854f7dfad46fab9b00d4126a9346d4&wts=1705242847"
     while True:
         fetch_and_parse_json(url)
         time.sleep(300)  # 休眠300秒，即5分钟
